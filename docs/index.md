@@ -74,9 +74,10 @@ For example:
 
 Træfɪk can be configured using a TOML file configuration, arguments, or both.
 By default, Træfɪk will try to find a `traefik.toml` in the following places:
+
 - `/etc/traefik/`
 - `$HOME/.traefik/`
-- `.` the working directory
+- `.` *the working directory*
 
 You can override this by setting a `configFile` argument:
 
