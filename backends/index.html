@@ -1,0 +1,1193 @@
+<!DOCTYPE html>
+<!--[if lt IE 7 ]><html class="no-js ie6"><![endif]-->
+<!--[if IE 7 ]><html class="no-js ie7"><![endif]-->
+<!--[if IE 8 ]><html class="no-js ie8"><![endif]-->
+<!--[if IE 9 ]><html class="no-js ie9"><![endif]-->
+<!--[if (gt IE 9)|!(IE)]><!--> <html class="no-js"> <!--<![endif]-->
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,user-scalable=no,initial-scale=1,maximum-scale=1">
+    
+      
+        <title>Backends - Traefik</title>
+      
+      
+      
+      
+        <meta name="author" content="containo.us">
+      
+    
+    <meta property="og:url" content="None">
+    <meta property="og:title" content="Traefik">
+    <meta property="og:image" content="None/../img/traefik.logo.png">
+    <meta name="apple-mobile-web-app-title" content="Traefik">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    
+      <link rel="apple-touch-icon" href="../img/traefik.logo.png">
+    
+    
+    <link rel="shortcut icon" type="image/x-icon" href="../None">
+    <link rel="icon" type="image/x-icon" href="../None">
+    <style>
+      @font-face {
+      	font-family: 'Icon';
+      	src: url('../assets/fonts/icon.eot?52m981');
+      	src: url('../assets/fonts/icon.eot?#iefix52m981')
+               format('embedded-opentype'),
+      		   url('../assets/fonts/icon.woff?52m981')
+               format('woff'),
+      		   url('../assets/fonts/icon.ttf?52m981')
+               format('truetype'),
+      		   url('../assets/fonts/icon.svg?52m981#icon')
+               format('svg');
+      	font-weight: normal;
+      	font-style: normal;
+      }
+    </style>
+    <link rel="stylesheet" href="../assets/stylesheets/application-54f87043f3.css">
+    
+      <link rel="stylesheet" href="../assets/stylesheets/palettes-05ab2406df.css">
+    
+    
+      
+      
+      
+      <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Ubuntu:400,700|Ubuntu+Mono">
+      <style>
+        body, input {
+          font-family: 'Ubuntu', Helvetica, Arial, sans-serif;
+        }
+        pre, code {
+          font-family: 'Ubuntu Mono', 'Courier New', 'Courier', monospace;
+        }
+      </style>
+    
+    
+    <script src="../assets/javascripts/modernizr-4ab42b99fd.js"></script>
+    
+  </head>
+  
+  
+  
+  <body class="palette-primary-blue palette-accent-light-blue">
+    
+      
+      
+    
+    <div class="backdrop">
+      <div class="backdrop-paper"></div>
+    </div>
+    <input class="toggle" type="checkbox" id="toggle-drawer">
+    <input class="toggle" type="checkbox" id="toggle-search">
+    <label class="toggle-button overlay" for="toggle-drawer"></label>
+    <header class="header">
+      <nav aria-label="Header">
+  <div class="bar default">
+    <div class="button button-menu" role="button" aria-label="Menu">
+      <label class="toggle-button icon icon-menu" for="toggle-drawer">
+        <span></span>
+      </label>
+    </div>
+    <div class="stretch">
+      <div class="title">
+        
+          <span class="path">
+            
+          </span>
+        
+        Backends
+      </div>
+    </div>
+    
+    
+    <div class="button button-search" role="button" aria-label="Search">
+      <label class="toggle-button icon icon-search" title="Search" for="toggle-search"></label>
+    </div>
+  </div>
+  <div class="bar search">
+    <div class="button button-close" role="button" aria-label="Close">
+      <label class="toggle-button icon icon-back" for="toggle-search"></label>
+    </div>
+    <div class="stretch">
+      <div class="field">
+        <input class="query" type="text" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck>
+      </div>
+    </div>
+    <div class="button button-reset" role="button" aria-label="Search">
+      <button class="toggle-button icon icon-close" id="reset-search"></button>
+    </div>
+  </div>
+</nav>
+    </header>
+    <main class="main">
+      
+      <div class="drawer">
+        <nav aria-label="Navigation">
+  
+  <a href="https://github.com/containous/traefik" class="project">
+    <div class="banner">
+      
+        <div class="logo">
+          <img src="../img/traefik.logo.png">
+        </div>
+      
+      <div class="name">
+        <strong>
+          Traefik
+          <span class="version">
+            
+          </span>
+        </strong>
+        
+          <br>
+          containous/traefik
+        
+      </div>
+    </div>
+  </a>
+  <div class="scrollable">
+    <div class="wrapper">
+      
+        <ul class="repo">
+          <li class="repo-download">
+            
+            <a href="https://github.com/containous/traefik/archive/master.zip" target="_blank" title="Download" data-action="download">
+              <i class="icon icon-download"></i> Download
+            </a>
+          </li>
+          <li class="repo-stars">
+            <a href="https://github.com/containous/traefik/stargazers" target="_blank" title="Stargazers" data-action="star">
+              <i class="icon icon-star"></i> Stars
+              <span class="count">&ndash;</span>
+            </a>
+          </li>
+        </ul>
+        <hr>
+      
+      <div class="toc">
+        <ul>
+          
+            
+  <li>
+    <a class="" title="Getting Stared" href="..">
+      Getting Stared
+    </a>
+    
+  </li>
+
+          
+            
+  <li>
+    <a class="" title="Launch configuration" href="../launch/">
+      Launch configuration
+    </a>
+    
+  </li>
+
+          
+            
+  <li>
+    <a class="" title="Global configuration" href="../global/">
+      Global configuration
+    </a>
+    
+  </li>
+
+          
+            
+  <li>
+    <a class="current" title="Backends" href="./">
+      Backends
+    </a>
+    
+      
+        
+      
+      
+        <ul>
+          
+            <li class="anchor">
+              <a title="File backend" href="#file-backend">
+                File backend
+              </a>
+            </li>
+          
+            <li class="anchor">
+              <a title="API backend" href="#api-backend">
+                API backend
+              </a>
+            </li>
+          
+            <li class="anchor">
+              <a title="Docker backend" href="#docker-backend">
+                Docker backend
+              </a>
+            </li>
+          
+            <li class="anchor">
+              <a title="Marathon backend" href="#marathon-backend">
+                Marathon backend
+              </a>
+            </li>
+          
+            <li class="anchor">
+              <a title="Consul backend" href="#consul-backend">
+                Consul backend
+              </a>
+            </li>
+          
+            <li class="anchor">
+              <a title="Consul catalog backend" href="#consul-catalog-backend">
+                Consul catalog backend
+              </a>
+            </li>
+          
+            <li class="anchor">
+              <a title="Etcd backend" href="#etcd-backend">
+                Etcd backend
+              </a>
+            </li>
+          
+            <li class="anchor">
+              <a title="Zookeeper backend" href="#zookeeper-backend">
+                Zookeeper backend
+              </a>
+            </li>
+          
+            <li class="anchor">
+              <a title="BoltDB backend" href="#boltdb-backend">
+                BoltDB backend
+              </a>
+            </li>
+          
+            <li class="anchor">
+              <a title="Key-value storage structure" href="#key-value-storage-structure">
+                Key-value storage structure
+              </a>
+            </li>
+          
+            <li class="anchor">
+              <a title="Atomic configuration changes" href="#atomic-configuration-changes">
+                Atomic configuration changes
+              </a>
+            </li>
+          
+        </ul>
+      
+    
+  </li>
+
+          
+        </ul>
+        
+      </div>
+    </div>
+  </div>
+</nav>
+      </div>
+      <article class="article">
+        <div class="wrapper">
+          
+          <h1 id="backends">Backends<a class="headerlink" href="#backends" title="Permanent link">##</a></h1>
+<h2 id="file-backend">File backend<a class="headerlink" href="#file-backend" title="Permanent link">##</a></h2>
+<p>Like any other reverse proxy, Træfɪk can be configured with a file. You have two choices:</p>
+<ul>
+<li>simply add your configuration at the end of the global configuration file <code>traefik.toml</code> :</li>
+</ul>
+<div class="code"><pre><span></span># traefik.toml
+defaultEntryPoints = [&quot;http&quot;, &quot;https&quot;]
+[entryPoints]
+  [entryPoints.http]
+  address = &quot;:80&quot;
+    [entryPoints.http.redirect]
+      entryPoint = &quot;https&quot;
+  [entryPoints.https]
+  address = &quot;:443&quot;
+    [entryPoints.https.tls]
+      [[entryPoints.https.tls.certificates]]
+      CertFile = &quot;integration/fixtures/https/snitest.com.cert&quot;
+      KeyFile = &quot;integration/fixtures/https/snitest.com.key&quot;
+      [[entryPoints.https.tls.certificates]]
+      CertFile = &quot;integration/fixtures/https/snitest.org.cert&quot;
+      KeyFile = &quot;integration/fixtures/https/snitest.org.key&quot;
+graceTimeOut = 10
+logLevel = &quot;DEBUG&quot;
+
+[file]
+
+# rules
+[backends]
+  [backends.backend1]
+    [backends.backend1.circuitbreaker]
+      expression = &quot;NetworkErrorRatio() &gt; 0.5&quot;
+    [backends.backend1.servers.server1]
+    url = &quot;http://172.17.0.2:80&quot;
+    weight = 10
+    [backends.backend1.servers.server2]
+    url = &quot;http://172.17.0.3:80&quot;
+    weight = 1
+  [backends.backend2]
+    [backends.backend2.LoadBalancer]
+      method = &quot;drr&quot;
+    [backends.backend2.servers.server1]
+    url = &quot;http://172.17.0.4:80&quot;
+    weight = 1
+    [backends.backend2.servers.server2]
+    url = &quot;http://172.17.0.5:80&quot;
+    weight = 2
+
+[frontends]
+  [frontends.frontend1]
+  backend = &quot;backend2&quot;
+    [frontends.frontend1.routes.test_1]
+    rule = &quot;Host:test.localhost&quot;
+  [frontends.frontend2]
+  backend = &quot;backend1&quot;
+  passHostHeader = true
+  entrypoints = [&quot;https&quot;] # overrides defaultEntryPoints
+    [frontends.frontend2.routes.test_1]
+    rule = &quot;Host:{subdomain:[a-z]+}.localhost&quot;
+  [frontends.frontend3]
+  entrypoints = [&quot;http&quot;, &quot;https&quot;] # overrides defaultEntryPoints
+  backend = &quot;backend2&quot;
+    rule = &quot;Path:/test&quot;
+</pre></div>
+
+
+<ul>
+<li>or put your rules in a separate file, for example <code>rules.tml</code>:</li>
+</ul>
+<div class="code"><pre><span></span># traefik.toml
+[entryPoints]
+  [entryPoints.http]
+  address = &quot;:80&quot;
+    [entryPoints.http.redirect]
+      entryPoint = &quot;https&quot;
+  [entryPoints.https]
+  address = &quot;:443&quot;
+    [entryPoints.https.tls]
+      [[entryPoints.https.tls.certificates]]
+      CertFile = &quot;integration/fixtures/https/snitest.com.cert&quot;
+      KeyFile = &quot;integration/fixtures/https/snitest.com.key&quot;
+      [[entryPoints.https.tls.certificates]]
+      CertFile = &quot;integration/fixtures/https/snitest.org.cert&quot;
+      KeyFile = &quot;integration/fixtures/https/snitest.org.key&quot;
+graceTimeOut = 10
+logLevel = &quot;DEBUG&quot;
+
+[file]
+filename = &quot;rules.toml&quot;
+</pre></div>
+
+
+<div class="code"><pre><span></span># rules.toml
+[backends]
+  [backends.backend1]
+    [backends.backend1.circuitbreaker]
+      expression = &quot;NetworkErrorRatio() &gt; 0.5&quot;
+    [backends.backend1.servers.server1]
+    url = &quot;http://172.17.0.2:80&quot;
+    weight = 10
+    [backends.backend1.servers.server2]
+    url = &quot;http://172.17.0.3:80&quot;
+    weight = 1
+  [backends.backend2]
+    [backends.backend2.LoadBalancer]
+      method = &quot;drr&quot;
+    [backends.backend2.servers.server1]
+    url = &quot;http://172.17.0.4:80&quot;
+    weight = 1
+    [backends.backend2.servers.server2]
+    url = &quot;http://172.17.0.5:80&quot;
+    weight = 2
+
+[frontends]
+  [frontends.frontend1]
+  backend = &quot;backend2&quot;
+    [frontends.frontend1.routes.test_1]
+    rule = &quot;Host:test.localhost&quot;
+  [frontends.frontend2]
+  backend = &quot;backend1&quot;
+  passHostHeader = true
+  entrypoints = [&quot;https&quot;] # overrides defaultEntryPoints
+    [frontends.frontend2.routes.test_1]
+    rule = &quot;Host:{subdomain:[a-z]+}.localhost&quot;
+  [frontends.frontend3]
+  entrypoints = [&quot;http&quot;, &quot;https&quot;] # overrides defaultEntryPoints
+  backend = &quot;backend2&quot;
+    rule = &quot;Path:/test&quot;
+</pre></div>
+
+
+<p>If you want Træfɪk to watch file changes automatically, just add:</p>
+<div class="code"><pre><span></span><span class="k">[file]</span>
+<span class="na">watch</span> <span class="o">=</span> <span class="s">true</span>
+</pre></div>
+
+
+<h2 id="api-backend">API backend<a class="headerlink" href="#api-backend" title="Permanent link">##</a></h2>
+<p>Træfik can be configured using a restful api.
+To enable it:</p>
+<div class="code"><pre><span></span><span class="k">[web]</span>
+<span class="na">address</span> <span class="o">=</span> <span class="s">&quot;:8080&quot;</span>
+
+<span class="c1"># SSL certificate and key used</span>
+<span class="c1">#</span>
+<span class="c1"># Optional</span>
+<span class="c1">#</span>
+<span class="c1"># CertFile = &quot;traefik.crt&quot;</span>
+<span class="c1"># KeyFile = &quot;traefik.key&quot;</span>
+<span class="c1">#</span>
+<span class="c1"># Set REST API to read-only mode</span>
+<span class="c1">#</span>
+<span class="c1"># Optional</span>
+<span class="c1"># ReadOnly = false</span>
+</pre></div>
+
+
+<ul>
+<li><code>/</code>: provides a simple HTML frontend of Træfik</li>
+</ul>
+<p><img alt="Web UI Providers" src="../img/web.frontend.png" />
+<img alt="Web UI Health" src="../img/traefik-health.png" /></p>
+<ul>
+<li><code>/health</code>: <code>GET</code> json metrics</li>
+</ul>
+<div class="code"><pre><span></span>$ curl -s <span class="s2">&quot;http://localhost:8080/health&quot;</span> <span class="p">|</span> jq .
+<span class="o">{</span>
+  // Træfɪk PID
+  <span class="s2">&quot;pid&quot;</span>: 2458,
+  // Træfɪk server uptime <span class="o">(</span>formated <span class="nb">time</span><span class="o">)</span>
+  <span class="s2">&quot;uptime&quot;</span>: <span class="s2">&quot;39m6.885931127s&quot;</span>,
+  //  Træfɪk server uptime in seconds
+  <span class="s2">&quot;uptime_sec&quot;</span>: 2346.885931127,
+  // current server date
+  <span class="s2">&quot;time&quot;</span>: <span class="s2">&quot;2015-10-07 18:32:24.362238909 +0200 CEST&quot;</span>,
+  // current server date in seconds
+  <span class="s2">&quot;unixtime&quot;</span>: 1444235544,
+  // count HTTP response status code in realtime
+  <span class="s2">&quot;status_code_count&quot;</span>: <span class="o">{</span>
+    <span class="s2">&quot;502&quot;</span>: 1
+  <span class="o">}</span>,
+  // count HTTP response status code since Træfɪk started
+  <span class="s2">&quot;total_status_code_count&quot;</span>: <span class="o">{</span>
+    <span class="s2">&quot;200&quot;</span>: 7,
+    <span class="s2">&quot;404&quot;</span>: 21,
+    <span class="s2">&quot;502&quot;</span>: 13
+  <span class="o">}</span>,
+  // count HTTP response
+  <span class="s2">&quot;count&quot;</span>: 1,
+  // count HTTP response
+  <span class="s2">&quot;total_count&quot;</span>: 41,
+  // sum of all response <span class="nb">time</span> <span class="o">(</span>formated <span class="nb">time</span><span class="o">)</span>
+  <span class="s2">&quot;total_response_time&quot;</span>: <span class="s2">&quot;35.456865605s&quot;</span>,
+  // sum of all response <span class="nb">time</span> in seconds
+  <span class="s2">&quot;total_response_time_sec&quot;</span>: 35.456865605,
+  // average response <span class="nb">time</span> <span class="o">(</span>formated <span class="nb">time</span><span class="o">)</span>
+  <span class="s2">&quot;average_response_time&quot;</span>: <span class="s2">&quot;864.8016ms&quot;</span>,
+  // average response <span class="nb">time</span> in seconds
+  <span class="s2">&quot;average_response_time_sec&quot;</span>: 0.8648016000000001
+<span class="o">}</span>
+</pre></div>
+
+
+<ul>
+<li><code>/api</code>: <code>GET</code> configuration for all providers</li>
+</ul>
+<div class="code"><pre><span></span>$ curl -s <span class="s2">&quot;http://localhost:8080/api&quot;</span> <span class="p">|</span> jq .
+<span class="o">{</span>
+  <span class="s2">&quot;file&quot;</span>: <span class="o">{</span>
+    <span class="s2">&quot;frontends&quot;</span>: <span class="o">{</span>
+      <span class="s2">&quot;frontend2&quot;</span>: <span class="o">{</span>
+        <span class="s2">&quot;routes&quot;</span>: <span class="o">{</span>
+          <span class="s2">&quot;test_2&quot;</span>: <span class="o">{</span>
+            <span class="s2">&quot;rule&quot;</span>: <span class="s2">&quot;Path:/test&quot;</span>
+          <span class="o">}</span>
+        <span class="o">}</span>,
+        <span class="s2">&quot;backend&quot;</span>: <span class="s2">&quot;backend1&quot;</span>
+      <span class="o">}</span>,
+      <span class="s2">&quot;frontend1&quot;</span>: <span class="o">{</span>
+        <span class="s2">&quot;routes&quot;</span>: <span class="o">{</span>
+          <span class="s2">&quot;test_1&quot;</span>: <span class="o">{</span>
+            <span class="s2">&quot;rule&quot;</span>: <span class="s2">&quot;Host:test.localhost&quot;</span>
+          <span class="o">}</span>
+        <span class="o">}</span>,
+        <span class="s2">&quot;backend&quot;</span>: <span class="s2">&quot;backend2&quot;</span>
+      <span class="o">}</span>
+    <span class="o">}</span>,
+    <span class="s2">&quot;backends&quot;</span>: <span class="o">{</span>
+      <span class="s2">&quot;backend2&quot;</span>: <span class="o">{</span>
+        <span class="s2">&quot;loadBalancer&quot;</span>: <span class="o">{</span>
+          <span class="s2">&quot;method&quot;</span>: <span class="s2">&quot;drr&quot;</span>
+        <span class="o">}</span>,
+        <span class="s2">&quot;servers&quot;</span>: <span class="o">{</span>
+          <span class="s2">&quot;server2&quot;</span>: <span class="o">{</span>
+            <span class="s2">&quot;weight&quot;</span>: 2,
+            <span class="s2">&quot;URL&quot;</span>: <span class="s2">&quot;http://172.17.0.5:80&quot;</span>
+          <span class="o">}</span>,
+          <span class="s2">&quot;server1&quot;</span>: <span class="o">{</span>
+            <span class="s2">&quot;weight&quot;</span>: 1,
+            <span class="s2">&quot;url&quot;</span>: <span class="s2">&quot;http://172.17.0.4:80&quot;</span>
+          <span class="o">}</span>
+        <span class="o">}</span>
+      <span class="o">}</span>,
+      <span class="s2">&quot;backend1&quot;</span>: <span class="o">{</span>
+        <span class="s2">&quot;loadBalancer&quot;</span>: <span class="o">{</span>
+          <span class="s2">&quot;method&quot;</span>: <span class="s2">&quot;wrr&quot;</span>
+        <span class="o">}</span>,
+        <span class="s2">&quot;circuitBreaker&quot;</span>: <span class="o">{</span>
+          <span class="s2">&quot;expression&quot;</span>: <span class="s2">&quot;NetworkErrorRatio() &gt; 0.5&quot;</span>
+        <span class="o">}</span>,
+        <span class="s2">&quot;servers&quot;</span>: <span class="o">{</span>
+          <span class="s2">&quot;server2&quot;</span>: <span class="o">{</span>
+            <span class="s2">&quot;weight&quot;</span>: 1,
+            <span class="s2">&quot;url&quot;</span>: <span class="s2">&quot;http://172.17.0.3:80&quot;</span>
+          <span class="o">}</span>,
+          <span class="s2">&quot;server1&quot;</span>: <span class="o">{</span>
+            <span class="s2">&quot;weight&quot;</span>: 10,
+            <span class="s2">&quot;url&quot;</span>: <span class="s2">&quot;http://172.17.0.2:80&quot;</span>
+          <span class="o">}</span>
+        <span class="o">}</span>
+      <span class="o">}</span>
+    <span class="o">}</span>
+  <span class="o">}</span>
+<span class="o">}</span>
+</pre></div>
+
+
+<ul>
+<li><code>/api/providers</code>: <code>GET</code> providers</li>
+<li><code>/api/providers/{provider}</code>: <code>GET</code> or <code>PUT</code> provider</li>
+<li><code>/api/providers/{provider}/backends</code>: <code>GET</code> backends</li>
+<li><code>/api/providers/{provider}/backends/{backend}</code>: <code>GET</code> a backend</li>
+<li><code>/api/providers/{provider}/backends/{backend}/servers</code>: <code>GET</code> servers in a backend</li>
+<li><code>/api/providers/{provider}/backends/{backend}/servers/{server}</code>: <code>GET</code> a server in a backend</li>
+<li><code>/api/providers/{provider}/frontends</code>: <code>GET</code> frontends</li>
+<li><code>/api/providers/{provider}/frontends/{frontend}</code>: <code>GET</code> a frontend</li>
+<li><code>/api/providers/{provider}/frontends/{frontend}/routes</code>: <code>GET</code> routes in a frontend</li>
+<li><code>/api/providers/{provider}/frontends/{frontend}/routes/{route}</code>: <code>GET</code> a route in a frontend</li>
+</ul>
+<h2 id="docker-backend">Docker backend<a class="headerlink" href="#docker-backend" title="Permanent link">##</a></h2>
+<p>Træfɪk can be configured to use Docker as a backend configuration:</p>
+<div class="code"><pre><span></span>################################################################
+# Docker configuration backend
+################################################################
+
+# Enable Docker configuration backend
+#
+# Optional
+#
+[docker]
+
+# Docker server endpoint. Can be a tcp or a unix socket endpoint.
+#
+# Required
+#
+endpoint = &quot;unix:///var/run/docker.sock&quot;
+
+# Default domain used.
+# Can be overridden by setting the &quot;traefik.domain&quot; label on a container.
+#
+# Required
+#
+domain = &quot;docker.localhost&quot;
+
+# Enable watch docker changes
+#
+# Optional
+#
+watch = true
+
+# Override default configuration template. For advanced users :)
+#
+# Optional
+#
+# filename = &quot;docker.tmpl&quot;
+
+# Enable docker TLS connection
+#
+#  [docker.tls]
+#  ca = &quot;/etc/ssl/ca.crt&quot;
+#  cert = &quot;/etc/ssl/docker.crt&quot;
+#  key = &quot;/etc/ssl/docker.key&quot;
+#  insecureskipverify = true
+</pre></div>
+
+
+<p>Labels can be used on containers to override default behaviour:</p>
+<ul>
+<li><code>traefik.backend=foo</code>: assign the container to <code>foo</code> backend</li>
+<li><code>traefik.port=80</code>: register this port. Useful when the container exposes multiples ports.</li>
+<li><code>traefik.protocol=https</code>: override the default <code>http</code> protocol</li>
+<li><code>traefik.weight=10</code>: assign this weight to the container</li>
+<li><code>traefik.enable=false</code>: disable this container in Træfɪk</li>
+<li><code>traefik.frontend.rule=Host:test.traefik.io</code>: override the default frontend rule (Default: <code>Host:{containerName}.{domain}</code>). See <a href="#frontends">frontends</a>.</li>
+<li><code>traefik.frontend.passHostHeader=true</code>: forward client <code>Host</code> header to the backend.</li>
+<li><code>traefik.frontend.entryPoints=http,https</code>: assign this frontend to entry points <code>http</code> and <code>https</code>. Overrides <code>defaultEntryPoints</code>.</li>
+<li><code>traefik.domain=traefik.localhost</code>: override the default domain</li>
+</ul>
+<h2 id="marathon-backend">Marathon backend<a class="headerlink" href="#marathon-backend" title="Permanent link">##</a></h2>
+<p>Træfɪk can be configured to use Marathon as a backend configuration:</p>
+<div class="code"><pre><span></span>################################################################
+# Mesos/Marathon configuration backend
+################################################################
+
+# Enable Marathon configuration backend
+#
+# Optional
+#
+[marathon]
+
+# Marathon server endpoint.
+# You can also specify multiple endpoint for Marathon:
+# endpoint := &quot;http://10.241.1.71:8080,10.241.1.72:8080,10.241.1.73:8080&quot;
+#
+# Required
+#
+endpoint = &quot;http://127.0.0.1:8080&quot;
+
+# Enable watch Marathon changes
+#
+# Optional
+#
+watch = true
+
+# Default domain used.
+# Can be overridden by setting the &quot;traefik.domain&quot; label on an application.
+#
+# Required
+#
+domain = &quot;marathon.localhost&quot;
+
+# Override default configuration template. For advanced users :)
+#
+# Optional
+#
+# filename = &quot;marathon.tmpl&quot;
+
+# Expose Marathon apps by default in traefik
+#
+# Optional
+# Default: false
+#
+# ExposedByDefault = true
+
+# Enable Marathon basic authentication
+#
+# Optional
+#
+#  [marathon.basic]
+#  httpBasicAuthUser = &quot;foo&quot;
+#  httpBasicPassword = &quot;bar&quot;
+
+# TLS client configuration. https://golang.org/pkg/crypto/tls/#Config
+#
+# Optional
+#
+# [marathon.TLS]
+# InsecureSkipVerify = true
+</pre></div>
+
+
+<p>Labels can be used on containers to override default behaviour:</p>
+<ul>
+<li><code>traefik.backend=foo</code>: assign the application to <code>foo</code> backend</li>
+<li><code>traefik.portIndex=1</code>: register port by index in the application's ports array. Useful when the application exposes multiple ports.</li>
+<li><code>traefik.port=80</code>: register the explicit application port value. Cannot be used alongside <code>traefik.portIndex</code>.</li>
+<li><code>traefik.protocol=https</code>: override the default <code>http</code> protocol</li>
+<li><code>traefik.weight=10</code>: assign this weight to the application</li>
+<li><code>traefik.enable=false</code>: disable this application in Træfɪk</li>
+<li><code>traefik.frontend.rule=Host:test.traefik.io</code>: override the default frontend rule (Default: <code>Host:{containerName}.{domain}</code>). See <a href="#frontends">frontends</a>.</li>
+<li><code>traefik.frontend.passHostHeader=true</code>: forward client <code>Host</code> header to the backend.</li>
+<li><code>traefik.frontend.entryPoints=http,https</code>: assign this frontend to entry points <code>http</code> and <code>https</code>. Overrides <code>defaultEntryPoints</code>.</li>
+<li><code>traefik.domain=traefik.localhost</code>: override the default domain</li>
+</ul>
+<h2 id="consul-backend">Consul backend<a class="headerlink" href="#consul-backend" title="Permanent link">##</a></h2>
+<p>Træfɪk can be configured to use Consul as a backend configuration:</p>
+<div class="code"><pre><span></span>################################################################
+# Consul KV configuration backend
+################################################################
+
+# Enable Consul KV configuration backend
+#
+# Optional
+#
+[consul]
+
+# Consul server endpoint
+#
+# Required
+#
+endpoint = &quot;127.0.0.1:8500&quot;
+
+# Enable watch Consul changes
+#
+# Optional
+#
+watch = true
+
+# Prefix used for KV store.
+#
+# Optional
+#
+prefix = &quot;traefik&quot;
+
+# Override default configuration template. For advanced users :)
+#
+# Optional
+#
+# filename = &quot;consul.tmpl&quot;
+
+# Enable consul TLS connection
+#
+# Optional
+#
+# [consul.tls]
+# ca = &quot;/etc/ssl/ca.crt&quot;
+# cert = &quot;/etc/ssl/consul.crt&quot;
+# key = &quot;/etc/ssl/consul.key&quot;
+# insecureskipverify = true
+</pre></div>
+
+
+<p>Please refer to the <a href="#key-value-storage-structure">Key Value storage structure</a> section to get documentation en traefik KV structure.</p>
+<h2 id="consul-catalog-backend">Consul catalog backend<a class="headerlink" href="#consul-catalog-backend" title="Permanent link">##</a></h2>
+<p>Træfɪk can be configured to use service discovery catalog of Consul as a backend configuration:</p>
+<div class="code"><pre><span></span>################################################################
+# Consul Catalog configuration backend
+################################################################
+
+# Enable Consul Catalog configuration backend
+#
+# Optional
+#
+[consulCatalog]
+
+# Consul server endpoint
+#
+# Required
+#
+endpoint = &quot;127.0.0.1:8500&quot;
+
+# Default domain used.
+#
+# Optional
+#
+domain = &quot;consul.localhost&quot;
+</pre></div>
+
+
+<p>This backend will create routes matching on hostname based on the service name
+used in consul.</p>
+<h2 id="etcd-backend">Etcd backend<a class="headerlink" href="#etcd-backend" title="Permanent link">##</a></h2>
+<p>Træfɪk can be configured to use Etcd as a backend configuration:</p>
+<div class="code"><pre><span></span>################################################################
+# Etcd configuration backend
+################################################################
+
+# Enable Etcd configuration backend
+#
+# Optional
+#
+# [etcd]
+
+# Etcd server endpoint
+#
+# Required
+#
+# endpoint = &quot;127.0.0.1:4001&quot;
+
+# Enable watch Etcd changes
+#
+# Optional
+#
+# watch = true
+
+# Prefix used for KV store.
+#
+# Optional
+#
+# prefix = &quot;/traefik&quot;
+
+# Override default configuration template. For advanced users :)
+#
+# Optional
+#
+# filename = &quot;etcd.tmpl&quot;
+
+# Enable etcd TLS connection
+#
+# Optional
+#
+# [etcd.tls]
+# ca = &quot;/etc/ssl/ca.crt&quot;
+# cert = &quot;/etc/ssl/etcd.crt&quot;
+# key = &quot;/etc/ssl/etcd.key&quot;
+# insecureskipverify = true
+</pre></div>
+
+
+<p>Please refer to the <a href="#key-value-storage-structure">Key Value storage structure</a> section to get documentation en traefik KV structure.</p>
+<h2 id="zookeeper-backend">Zookeeper backend<a class="headerlink" href="#zookeeper-backend" title="Permanent link">##</a></h2>
+<p>Træfɪk can be configured to use Zookeeper as a backend configuration:</p>
+<div class="code"><pre><span></span>################################################################
+# Zookeeper configuration backend
+################################################################
+
+# Enable Zookeeperconfiguration backend
+#
+# Optional
+#
+# [zookeeper]
+
+# Zookeeper server endpoint
+#
+# Required
+#
+# endpoint = &quot;127.0.0.1:2181&quot;
+
+# Enable watch Zookeeper changes
+#
+# Optional
+#
+# watch = true
+
+# Prefix used for KV store.
+#
+# Optional
+#
+# prefix = &quot;/traefik&quot;
+
+# Override default configuration template. For advanced users :)
+#
+# Optional
+#
+# filename = &quot;zookeeper.tmpl&quot;
+</pre></div>
+
+
+<p>Please refer to the <a href="#key-value-storage-structure">Key Value storage structure</a> section to get documentation en traefik KV structure.</p>
+<h2 id="boltdb-backend">BoltDB backend<a class="headerlink" href="#boltdb-backend" title="Permanent link">##</a></h2>
+<p>Træfɪk can be configured to use BoltDB as a backend configuration:</p>
+<div class="code"><pre><span></span>################################################################
+# BoltDB configuration backend
+################################################################
+
+# Enable BoltDB configuration backend
+#
+# Optional
+#
+# [boltdb]
+
+# BoltDB file
+#
+# Required
+#
+# endpoint = &quot;/my.db&quot;
+
+# Enable watch BoltDB changes
+#
+# Optional
+#
+# watch = true
+
+# Prefix used for KV store.
+#
+# Optional
+#
+# prefix = &quot;/traefik&quot;
+
+# Override default configuration template. For advanced users :)
+#
+# Optional
+#
+# filename = &quot;boltdb.tmpl&quot;
+</pre></div>
+
+
+<p>Please refer to the <a href="#key-value-storage-structure">Key Value storage structure</a> section to get documentation en traefik KV structure.</p>
+<h2 id="key-value-storage-structure">Key-value storage structure<a class="headerlink" href="#key-value-storage-structure" title="Permanent link">##</a></h2>
+<p>The Keys-Values structure should look (using <code>prefix = "/traefik"</code>):</p>
+<ul>
+<li>backend 1</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>Key</th>
+<th>Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>/traefik/backends/backend1/circuitbreaker/expression</code></td>
+<td><code>NetworkErrorRatio() &gt; 0.5</code></td>
+</tr>
+<tr>
+<td><code>/traefik/backends/backend1/servers/server1/url</code></td>
+<td><code>http://172.17.0.2:80</code></td>
+</tr>
+<tr>
+<td><code>/traefik/backends/backend1/servers/server1/weight</code></td>
+<td><code>10</code></td>
+</tr>
+<tr>
+<td><code>/traefik/backends/backend1/servers/server2/url</code></td>
+<td><code>http://172.17.0.3:80</code></td>
+</tr>
+<tr>
+<td><code>/traefik/backends/backend1/servers/server2/weight</code></td>
+<td><code>1</code></td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>backend 2</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>Key</th>
+<th>Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>/traefik/backends/backend2/loadbalancer/method</code></td>
+<td><code>drr</code></td>
+</tr>
+<tr>
+<td><code>/traefik/backends/backend2/servers/server1/url</code></td>
+<td><code>http://172.17.0.4:80</code></td>
+</tr>
+<tr>
+<td><code>/traefik/backends/backend2/servers/server1/weight</code></td>
+<td><code>1</code></td>
+</tr>
+<tr>
+<td><code>/traefik/backends/backend2/servers/server2/url</code></td>
+<td><code>http://172.17.0.5:80</code></td>
+</tr>
+<tr>
+<td><code>/traefik/backends/backend2/servers/server2/weight</code></td>
+<td><code>2</code></td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>frontend 1</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>Key</th>
+<th>Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>/traefik/frontends/frontend1/backend</code></td>
+<td><code>backend2</code></td>
+</tr>
+<tr>
+<td><code>/traefik/frontends/frontend1/routes/test_1/rule</code></td>
+<td><code>Host:test.localhost</code></td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>frontend 2</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>Key</th>
+<th>Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>/traefik/frontends/frontend2/backend</code></td>
+<td><code>backend1</code></td>
+</tr>
+<tr>
+<td><code>/traefik/frontends/frontend2/passHostHeader</code></td>
+<td><code>true</code></td>
+</tr>
+<tr>
+<td><code>/traefik/frontends/frontend2/entrypoints</code></td>
+<td><code>http,https</code></td>
+</tr>
+<tr>
+<td><code>/traefik/frontends/frontend2/routes/test_2/rule</code></td>
+<td><code>Path:/test</code></td>
+</tr>
+</tbody>
+</table>
+<h2 id="atomic-configuration-changes">Atomic configuration changes<a class="headerlink" href="#atomic-configuration-changes" title="Permanent link">##</a></h2>
+<p>The <a href="https://github.com/coreos/etcd/issues/860">Etcd</a> and <a href="https://github.com/hashicorp/consul/issues/886">Consul</a> backends do not support updating multiple keys atomically. As a result, it may be possible for Træfɪk to read an intermediate configuration state despite judicious use of the <code>--providersThrottleDuration</code> flag. To solve this problem, Træfɪk supports a special key called <code>/traefik/alias</code>. If set, Træfɪk use the value as an alternative key prefix.</p>
+<p>Given the key structure below, Træfɪk will use the <code>http://172.17.0.2:80</code> as its only backend (frontend keys have been omitted for brevity).</p>
+<table>
+<thead>
+<tr>
+<th>Key</th>
+<th>Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>/traefik/alias</code></td>
+<td><code>/traefik_configurations/1</code></td>
+</tr>
+<tr>
+<td><code>/traefik_configurations/1/backends/backend1/servers/server1/url</code></td>
+<td><code>http://172.17.0.2:80</code></td>
+</tr>
+<tr>
+<td><code>/traefik_configurations/1/backends/backend1/servers/server1/weight</code></td>
+<td><code>10</code></td>
+</tr>
+</tbody>
+</table>
+<p>When an atomic configuration change is required, you may write a new configuration at an alternative prefix. Here, although the <code>/traefik_configurations/2/...</code> keys have been set, the old configuration is still active because the <code>/traefik/alias</code> key still points to <code>/traefik_configurations/1</code>:</p>
+<table>
+<thead>
+<tr>
+<th>Key</th>
+<th>Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>/traefik/alias</code></td>
+<td><code>/traefik_configurations/1</code></td>
+</tr>
+<tr>
+<td><code>/traefik_configurations/1/backends/backend1/servers/server1/url</code></td>
+<td><code>http://172.17.0.2:80</code></td>
+</tr>
+<tr>
+<td><code>/traefik_configurations/1/backends/backend1/servers/server1/weight</code></td>
+<td><code>10</code></td>
+</tr>
+<tr>
+<td><code>/traefik_configurations/2/backends/backend1/servers/server1/url</code></td>
+<td><code>http://172.17.0.2:80</code></td>
+</tr>
+<tr>
+<td><code>/traefik_configurations/2/backends/backend1/servers/server1/weight</code></td>
+<td><code>5</code></td>
+</tr>
+<tr>
+<td><code>/traefik_configurations/2/backends/backend1/servers/server2/url</code></td>
+<td><code>http://172.17.0.3:80</code></td>
+</tr>
+<tr>
+<td><code>/traefik_configurations/2/backends/backend1/servers/server2/weight</code></td>
+<td><code>5</code></td>
+</tr>
+</tbody>
+</table>
+<p>Once the <code>/traefik/alias</code> key is updated, the new <code>/traefik_configurations/2</code> configuration becomes active atomically. Here, we have a 50% balance between the <code>http://172.17.0.3:80</code> and the <code>http://172.17.0.4:80</code> hosts while no traffic is sent to the <code>172.17.0.2:80</code> host:</p>
+<table>
+<thead>
+<tr>
+<th>Key</th>
+<th>Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>/traefik/alias</code></td>
+<td><code>/traefik_configurations/2</code></td>
+</tr>
+<tr>
+<td><code>/traefik_configurations/1/backends/backend1/servers/server1/url</code></td>
+<td><code>http://172.17.0.2:80</code></td>
+</tr>
+<tr>
+<td><code>/traefik_configurations/1/backends/backend1/servers/server1/weight</code></td>
+<td><code>10</code></td>
+</tr>
+<tr>
+<td><code>/traefik_configurations/2/backends/backend1/servers/server1/url</code></td>
+<td><code>http://172.17.0.3:80</code></td>
+</tr>
+<tr>
+<td><code>/traefik_configurations/2/backends/backend1/servers/server1/weight</code></td>
+<td><code>5</code></td>
+</tr>
+<tr>
+<td><code>/traefik_configurations/2/backends/backend1/servers/server2/url</code></td>
+<td><code>http://172.17.0.4:80</code></td>
+</tr>
+<tr>
+<td><code>/traefik_configurations/2/backends/backend1/servers/server2/weight</code></td>
+<td><code>5</code></td>
+</tr>
+</tbody>
+</table>
+<p>Note that Træfɪk <em>will not watch for key changes in the <code>/traefik_configurations</code> prefix</em>. It will only watch for changes in the <code>/traefik</code> prefix. Further, if the <code>/traefik/alias</code> key is set, all other sibling keys with the <code>/traefik</code> prefix are ignored.</p>
+          <aside class="copyright" role="note">
+            
+              Copyright (c) 2016 Containous SAS &ndash;
+            
+            Documentation built with
+            <a href="http://www.mkdocs.org" target="_blank">MkDocs</a>
+            using the
+            <a href="http://squidfunk.github.io/mkdocs-material/" target="_blank">
+              Material
+            </a>
+            theme.
+          </aside>
+          
+            <footer class="footer">
+              
+  <nav class="pagination" aria-label="Footer">
+    <div class="previous">
+      
+        <a href="../global/" title="Global configuration">
+          <span class="direction">
+            Previous
+          </span>
+          <div class="page">
+            <div class="button button-previous" role="button" aria-label="Previous">
+              <i class="icon icon-back"></i>
+            </div>
+            <div class="stretch">
+              <div class="title">
+                Global configuration
+              </div>
+            </div>
+          </div>
+        </a>
+      
+    </div>
+    <div class="next">
+      
+    </div>
+  </nav>
+
+            </footer>
+          
+        </div>
+      </article>
+      <div class="results" role="status" aria-live="polite">
+        <div class="scrollable">
+          <div class="wrapper">
+            <div class="meta"></div>
+            <div class="list"></div>
+          </div>
+        </div>
+      </div>
+    </main>
+    <script>
+      var base_url = '..';
+      var repo_id  = 'containous/traefik';
+    </script>
+    <script src="../assets/javascripts/application-997097ee0c.js"></script>
+    
+    
+  </body>
+</html>
