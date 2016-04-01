@@ -1,6 +1,6 @@
 
 <p align="center">
-<img src="http://traefik.github.io/traefik.logo.svg" alt="Træfɪk" title="Træfɪk" />
+<img src="docs/img/traefik.logo.png" alt="Træfɪk" title="Træfɪk" />
 </p>
 
 [![Build Status](https://travis-ci.org/containous/traefik.svg?branch=master)](https://travis-ci.org/containous/traefik)
