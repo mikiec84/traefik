@@ -1,245 +1,129 @@
 <!DOCTYPE html>
-<!--[if lt IE 7 ]><html class="no-js ie6"><![endif]-->
-<!--[if IE 7 ]><html class="no-js ie7"><![endif]-->
-<!--[if IE 8 ]><html class="no-js ie8"><![endif]-->
-<!--[if IE 9 ]><html class="no-js ie9"><![endif]-->
-<!--[if (gt IE 9)|!(IE)]><!--> <html class="no-js"> <!--<![endif]-->
-  <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width,user-scalable=no,initial-scale=1,maximum-scale=1">
-    
-      
-        <title>Traefik - Traefik Documentation</title>
-      
-      
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <meta name="description" content="Traefik Documentation">
-      
-      
-        <link rel="canonical" href="https://docs.traefik.io/">
-      
-      
         <meta name="author" content="containo.us">
-      
-    
-    <meta property="og:url" content="https://docs.traefik.io/">
-    <meta property="og:title" content="Traefik">
-    <meta property="og:image" content="https://docs.traefik.io//./img/traefik.logo.png">
-    <meta name="apple-mobile-web-app-title" content="Traefik">
-    <meta name="apple-mobile-web-app-capable" content="yes">
-    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-    
-      <link rel="apple-touch-icon" href="./img/traefik.logo.png">
-    
-    
-    <link rel="shortcut icon" type="image/x-icon" href="./img/traefik.icon.png">
-    <link rel="icon" type="image/x-icon" href="./img/traefik.icon.png">
-    <style>
-      @font-face {
-      	font-family: 'Icon';
-      	src: url('./assets/fonts/icon.eot?52m981');
-      	src: url('./assets/fonts/icon.eot?#iefix52m981')
-               format('embedded-opentype'),
-      		   url('./assets/fonts/icon.woff?52m981')
-               format('woff'),
-      		   url('./assets/fonts/icon.ttf?52m981')
-               format('truetype'),
-      		   url('./assets/fonts/icon.svg?52m981#icon')
-               format('svg');
-      	font-weight: normal;
-      	font-style: normal;
-      }
-    </style>
-    <link rel="stylesheet" href="./assets/stylesheets/application-54f87043f3.css">
-    
-      <link rel="stylesheet" href="./assets/stylesheets/palettes-05ab2406df.css">
-    
-    
-      
-      
-      
-      <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Ubuntu:400,700|Ubuntu+Mono">
-      <style>
-        body, input {
-          font-family: 'Ubuntu', Helvetica, Arial, sans-serif;
-        }
-        pre, code {
-          font-family: 'Ubuntu Mono', 'Courier New', 'Courier', monospace;
-        }
-      </style>
-    
-    
-    <script src="./assets/javascripts/modernizr-4ab42b99fd.js"></script>
-    
-  </head>
-  
-  
-  
-  <body class="palette-primary-blue palette-accent-light-blue">
-    
-      
-      
-    
-    <div class="backdrop">
-      <div class="backdrop-paper"></div>
-    </div>
-    <input class="toggle" type="checkbox" id="toggle-drawer">
-    <input class="toggle" type="checkbox" id="toggle-search">
-    <label class="toggle-button overlay" for="toggle-drawer"></label>
-    <header class="header">
-      <nav aria-label="Header">
-  <div class="bar default">
-    <div class="button button-menu" role="button" aria-label="Menu">
-      <label class="toggle-button icon icon-menu" for="toggle-drawer">
-        <span></span>
-      </label>
-    </div>
-    <div class="stretch">
-      <div class="title">
+        <link rel="canonical" href="https://docs.traefik.io/">
+        <link rel="shortcut icon" href="img/traefik.icon.png">
         
-          <span class="path">
-            
-          </span>
+
+	<title>Traefik</title>
+
+        <link href="./css/bootstrap-custom.min.css" rel="stylesheet">
+        <link href="./css/font-awesome-4.0.3.css" rel="stylesheet">
+        <link rel="stylesheet" href="./css/highlight.css">
+        <link href="./css/base.css" rel="stylesheet">
+
+        <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+        <!--[if lt IE 9]>
+            <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+            <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
+        <![endif]-->
+
         
-        Traefik
-      </div>
-    </div>
-    
-    
-    <div class="button button-search" role="button" aria-label="Search">
-      <label class="toggle-button icon icon-search" title="Search" for="toggle-search"></label>
-    </div>
-  </div>
-  <div class="bar search">
-    <div class="button button-close" role="button" aria-label="Close">
-      <label class="toggle-button icon icon-back" for="toggle-search"></label>
-    </div>
-    <div class="stretch">
-      <div class="field">
-        <input class="query" type="text" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck>
-      </div>
-    </div>
-    <div class="button button-reset" role="button" aria-label="Search">
-      <button class="toggle-button icon icon-close" id="reset-search"></button>
-    </div>
-  </div>
-</nav>
-    </header>
-    <main class="main">
-      
-      <div class="drawer">
-        <nav aria-label="Navigation">
-  
-  <a href="https://github.com/containous/traefik" class="project">
-    <div class="banner">
-      
-        <div class="logo">
-          <img src="./img/traefik.logo.png">
+    </head>
+
+    <body>
+
+        <div class="navbar navbar-default navbar-fixed-top" role="navigation">
+    <div class="container">
+
+        <!-- Collapsed navigation -->
+        <div class="navbar-header">
+            <!-- Expander button -->
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+
+            <!-- Main title -->
+            <a class="navbar-brand" href=".">Traefik</a>
         </div>
-      
-      <div class="name">
-        <strong>
-          Traefik
-          <span class="version">
+
+        <!-- Expanded navigation -->
+        <div class="navbar-collapse collapse">
+            <!-- Main navigation -->
+            <ul class="nav navbar-nav">
             
-          </span>
-        </strong>
-        
-          <br>
-          containous/traefik
-        
-      </div>
+            
+                <li class="active">
+                    <a href=".">Getting Stared</a>
+                </li>
+            
+            
+            
+                <li >
+                    <a href="launch/">Launch configuration</a>
+                </li>
+            
+            
+            
+                <li >
+                    <a href="global/">Global configuration</a>
+                </li>
+            
+            
+            
+                <li >
+                    <a href="backends/">Backends</a>
+                </li>
+            
+            
+            </ul>
+
+            <!-- Search, Navigation and Repo links -->
+            <ul class="nav navbar-nav navbar-right">
+                <li>
+                    <a href="#" data-toggle="modal" data-target="#mkdocs_search_modal">
+                        <i class="fa fa-search"></i> Search
+                    </a>
+                </li>
+                <li class="disabled">
+                    <a rel="next" >
+                        <i class="fa fa-arrow-left"></i> Previous
+                    </a>
+                </li>
+                <li >
+                    <a rel="prev" href="launch/">
+                        Next <i class="fa fa-arrow-right"></i>
+                    </a>
+                </li>
+                
+                <li>
+                    <a href="https://github.com/containous/traefik">
+                        
+                            <i class="fa fa-github"></i>
+                        
+                        GitHub
+                    </a>
+                </li>
+                
+            </ul>
+        </div>
     </div>
-  </a>
-  <div class="scrollable">
-    <div class="wrapper">
-      
-        <ul class="repo">
-          <li class="repo-download">
-            
-            <a href="https://github.com/containous/traefik/archive/master.zip" target="_blank" title="Download" data-action="download">
-              <i class="icon icon-download"></i> Download
-            </a>
-          </li>
-          <li class="repo-stars">
-            <a href="https://github.com/containous/traefik/stargazers" target="_blank" title="Stargazers" data-action="star">
-              <i class="icon icon-star"></i> Stars
-              <span class="count">&ndash;</span>
-            </a>
-          </li>
-        </ul>
-        <hr>
-      
-      <div class="toc">
-        <ul>
-          
-            
-  <li>
-    <a class="current" title="Getting Stared" href=".">
-      Getting Stared
-    </a>
+</div>
+
+        <div class="container">
+            <div class="col-md-3"><div class="bs-sidebar hidden-print affix well" role="complementary">
+    <ul class="nav bs-sidenav">
     
-      
+        <li class="main active"><a href="#getting-started">Getting started</a></li>
         
-      
-      
-        <ul>
-          
-            <li class="anchor">
-              <a title="Frontends" href="#frontends">
-                Frontends
-              </a>
-            </li>
-          
-            <li class="anchor">
-              <a title="HTTP Backends" href="#http-backends">
-                HTTP Backends
-              </a>
-            </li>
-          
-        </ul>
-      
-    
-  </li>
-
-          
-            
-  <li>
-    <a class="" title="Launch configuration" href="launch/">
-      Launch configuration
-    </a>
-    
-  </li>
-
-          
-            
-  <li>
-    <a class="" title="Global configuration" href="global/">
-      Global configuration
-    </a>
-    
-  </li>
-
-          
-            
-  <li>
-    <a class="" title="Backends" href="backends/">
-      Backends
-    </a>
-    
-  </li>
-
-          
-        </ul>
+            <li><a href="#frontends">Frontends</a></li>
         
-      </div>
-    </div>
-  </div>
-</nav>
-      </div>
-      <article class="article">
-        <div class="wrapper">
-          
-          <p align="center">
+            <li><a href="#http-backends">HTTP Backends</a></li>
+        
+    
+    </ul>
+</div></div>
+            <div class="col-md-9" role="main">
+
+<p align="center">
 <img src="img/traefik.logo.png" alt="Træfɪk" title="Træfɪk" />
 </p>
 
@@ -281,66 +165,47 @@ In case if the condition does not match and recovery timer expries, CB enters St
 <p>For example:
 - <code>NetworkErrorRatio() &gt; 0.5</code>: watch error ratio over 10 second sliding window for a frontend
 - <code>LatencyAtQuantileMS(50.0) &gt; 50</code>:  watch latency at quantile in milliseconds.
-- <code>ResponseCodeRatio(500, 600, 0, 600) &gt; 0.5</code>: ratio of response codes in range [500-600) to  [0-600)</p>
-          <aside class="copyright" role="note">
-            
-              Copyright (c) 2016 Containous SAS &ndash;
-            
-            Documentation built with
-            <a href="http://www.mkdocs.org" target="_blank">MkDocs</a>
-            using the
-            <a href="http://squidfunk.github.io/mkdocs-material/" target="_blank">
-              Material
-            </a>
-            theme.
-          </aside>
-          
-            <footer class="footer">
-              
-  <nav class="pagination" aria-label="Footer">
-    <div class="previous">
-      
-    </div>
-    <div class="next">
-      
-        <a href="launch/" title="Launch configuration">
-          <span class="direction">
-            Next
-          </span>
-          <div class="page">
-            <div class="stretch">
-              <div class="title">
-                Launch configuration
-              </div>
-            </div>
-            <div class="button button-next" role="button" aria-label="Next">
-              <i class="icon icon-forward"></i>
-            </div>
-          </div>
-        </a>
-      
-    </div>
-  </nav>
+- <code>ResponseCodeRatio(500, 600, 0, 600) &gt; 0.5</code>: ratio of response codes in range [500-600) to  [0-600)</p></div>
+        </div>
 
-            </footer>
-          
+        <footer class="col-md-12">
+            <hr>
+            
+                <center>Copyright (c) 2016 Containous SAS</center>
+            
+            <center>Documentation built with <a href="http://www.mkdocs.org/">MkDocs</a>.</center>
+        </footer>
+
+        <script src="./js/jquery-1.10.2.min.js"></script>
+        <script src="./js/bootstrap-3.0.3.min.js"></script>
+        <script src="./js/highlight.pack.js"></script>
+        <script>var base_url = '.';</script>
+        <script data-main="./mkdocs/js/search.js" src="./mkdocs/js/require.js"></script>
+        <script src="./js/base.js"></script>
+
+        <div class="modal" id="mkdocs_search_modal" tabindex="-1" role="dialog" aria-labelledby="Search Modal" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                        <h4 class="modal-title" id="exampleModalLabel">Search</h4>
+                    </div>
+                    <div class="modal-body">
+                        <p>
+                            From here you can search these documents. Enter
+                            your search terms below.
+                        </p>
+                        <form role="form">
+                            <div class="form-group">
+                                <input type="text" class="form-control" placeholder="Search..." id="mkdocs-search-query">
+                            </div>
+                        </form>
+                        <div id="mkdocs-search-results"></div>
+                    </div>
+                    <div class="modal-footer">
+                    </div>
+                </div>
+            </div>
         </div>
-      </article>
-      <div class="results" role="status" aria-live="polite">
-        <div class="scrollable">
-          <div class="wrapper">
-            <div class="meta"></div>
-            <div class="list"></div>
-          </div>
-        </div>
-      </div>
-    </main>
-    <script>
-      var base_url = '.';
-      var repo_id  = 'containous/traefik';
-    </script>
-    <script src="./assets/javascripts/application-997097ee0c.js"></script>
-    
-    
-  </body>
+    </body>
 </html>
