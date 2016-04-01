@@ -3,7 +3,7 @@
 
     
     <url>
-     <loc>None/</loc>
+     <loc>https://docs.traefik.io/</loc>
      <lastmod>2016-04-01</lastmod>
      <changefreq>daily</changefreq>
     </url>
@@ -11,7 +11,7 @@
 
     
     <url>
-     <loc>None/launch/</loc>
+     <loc>https://docs.traefik.io/launch/</loc>
      <lastmod>2016-04-01</lastmod>
      <changefreq>daily</changefreq>
     </url>
@@ -19,7 +19,7 @@
 
     
     <url>
-     <loc>None/global/</loc>
+     <loc>https://docs.traefik.io/global/</loc>
      <lastmod>2016-04-01</lastmod>
      <changefreq>daily</changefreq>
     </url>
@@ -27,7 +27,7 @@
 
     
     <url>
-     <loc>None/backends/</loc>
+     <loc>https://docs.traefik.io/backends/</loc>
      <lastmod>2016-04-01</lastmod>
      <changefreq>daily</changefreq>
     </url>
