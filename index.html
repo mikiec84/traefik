@@ -12,9 +12,9 @@
 	<title>Traefik</title>
 
         <link href="./css/bootstrap-custom.min.css" rel="stylesheet">
-        <link href="./css/font-awesome-4.5.0.css" rel="stylesheet">
-        <link href="./css/base.css" rel="stylesheet">
+        <link href="./css/font-awesome-4.0.3.css" rel="stylesheet">
         <link rel="stylesheet" href="./css/highlight.css">
+        <link href="./css/base.css" rel="stylesheet">
 
         <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
         <!--[if lt IE 9]>
@@ -25,14 +25,13 @@
         
     </head>
 
-    <body class="homepage">
+    <body>
 
         <div class="navbar navbar-default navbar-fixed-top" role="navigation">
     <div class="container">
 
         <!-- Collapsed navigation -->
         <div class="navbar-header">
-            
             <!-- Expander button -->
             <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
                 <span class="sr-only">Toggle navigation</span>
@@ -40,7 +39,6 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            
 
             <!-- Main title -->
             <a class="navbar-brand" href=".">Traefik</a>
@@ -48,64 +46,61 @@
 
         <!-- Expanded navigation -->
         <div class="navbar-collapse collapse">
+            <!-- Main navigation -->
+            <ul class="nav navbar-nav">
             
-                <!-- Main navigation -->
-                <ul class="nav navbar-nav">
-                
-                
-                    <li class="active">
-                        <a href=".">Getting Stared</a>
-                    </li>
-                
-                
-                
-                    <li >
-                        <a href="launch/">Launch configuration</a>
-                    </li>
-                
-                
-                
-                    <li >
-                        <a href="global/">Global configuration</a>
-                    </li>
-                
-                
-                
-                    <li >
-                        <a href="backends/">Backends</a>
-                    </li>
-                
-                
-                </ul>
             
+                <li class="active">
+                    <a href=".">Getting Stared</a>
+                </li>
+            
+            
+            
+                <li >
+                    <a href="launch/">Launch configuration</a>
+                </li>
+            
+            
+            
+                <li >
+                    <a href="global/">Global configuration</a>
+                </li>
+            
+            
+            
+                <li >
+                    <a href="backends/">Backends</a>
+                </li>
+            
+            
+            </ul>
 
+            <!-- Search, Navigation and Repo links -->
             <ul class="nav navbar-nav navbar-right">
                 <li>
                     <a href="#" data-toggle="modal" data-target="#mkdocs_search_modal">
                         <i class="fa fa-search"></i> Search
                     </a>
                 </li>
+                <li class="disabled">
+                    <a rel="next" >
+                        <i class="fa fa-arrow-left"></i> Previous
+                    </a>
+                </li>
+                <li >
+                    <a rel="prev" href="launch/">
+                        Next <i class="fa fa-arrow-right"></i>
+                    </a>
+                </li>
                 
-                    <li class="disabled">
-                        <a rel="next" >
-                            <i class="fa fa-arrow-left"></i> Previous
-                        </a>
-                    </li>
-                    <li >
-                        <a rel="prev" href="launch/">
-                            Next <i class="fa fa-arrow-right"></i>
-                        </a>
-                    </li>
-                
-                
-                    <li>
-                        <a href="https://github.com/containous/traefik">
-                            
-                                <i class="fa fa-github"></i>
-                            
-                            GitHub
-                        </a>
-                    </li>
+                <li>
+                    <a href="https://github.com/containous/traefik">
+                        
+                            <i class="fa fa-github"></i>
+                        
+                        GitHub
+                    </a>
+                </li>
                 
             </ul>
         </div>
@@ -113,8 +108,7 @@
 </div>
 
         <div class="container">
-            
-                <div class="col-md-3"><div class="bs-sidebar hidden-print affix well" role="complementary">
+            <div class="col-md-3"><div class="bs-sidebar hidden-print affix well" role="complementary">
     <ul class="nav bs-sidenav">
     
         <li class="main active"><a href="#getting-started">Getting started</a></li>
@@ -126,7 +120,7 @@
     
     </ul>
 </div></div>
-                <div class="col-md-9" role="main">
+            <div class="col-md-9" role="main">
 
 <p align="center">
 <img src="http://traefik.github.io/traefik.logo.svg" alt="Træfɪk" title="Træfɪk" />
@@ -171,15 +165,14 @@ In case if the condition does not match and recovery timer expries, CB enters St
 - <code>NetworkErrorRatio() &gt; 0.5</code>: watch error ratio over 10 second sliding window for a frontend
 - <code>LatencyAtQuantileMS(50.0) &gt; 50</code>:  watch latency at quantile in milliseconds.
 - <code>ResponseCodeRatio(500, 600, 0, 600) &gt; 0.5</code>: ratio of response codes in range [500-600) to  [0-600)</p></div>
-            
         </div>
 
         <footer class="col-md-12">
             <hr>
             
-                <p>Copyright (c) 2016 Containous SAS</p>
+                <center>Copyright (c) 2016 Containous SAS</center>
             
-            <p>Documentation built with <a href="http://www.mkdocs.org/">MkDocs</a>.</p>
+            <center>Documentation built with <a href="http://www.mkdocs.org/">MkDocs</a>.</center>
         </footer>
 
         <script src="./js/jquery-1.10.2.min.js"></script>
@@ -213,11 +206,5 @@ In case if the condition does not match and recovery timer expries, CB enters St
                 </div>
             </div>
         </div>
-
     </body>
 </html>
-
-<!--
-MkDocs version : 0.15.3
-Build Date UTC : 2016-04-01 14:59:50.990233
--->
