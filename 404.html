@@ -6,7 +6,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <meta name="description" content="Traefik Documentation">
         <meta name="author" content="containo.us">
-        <link rel="canonical" href="https://docs.traefik.io/">
+        
         <link rel="shortcut icon" href="./img/favicon.ico">
 
 	<title>Traefik</title>
@@ -25,7 +25,7 @@
         
     </head>
 
-    <body class="homepage">
+    <body>
 
         <div class="navbar navbar-default navbar-fixed-top" role="navigation">
     <div class="container">
@@ -53,7 +53,7 @@
                 <ul class="nav navbar-nav">
                 
                 
-                    <li class="active">
+                    <li >
                         <a href=".">Getting Stared</a>
                     </li>
                 
@@ -91,8 +91,8 @@
                             <i class="fa fa-arrow-left"></i> Previous
                         </a>
                     </li>
-                    <li >
-                        <a rel="prev" href="launch/">
+                    <li class="disabled">
+                        <a rel="prev" >
                             Next <i class="fa fa-arrow-right"></i>
                         </a>
                     </li>
@@ -114,64 +114,15 @@
 
         <div class="container">
             
-                <div class="col-md-3"><div class="bs-sidebar hidden-print affix well" role="complementary">
-    <ul class="nav bs-sidenav">
-    
-        <li class="main active"><a href="#getting-started">Getting started</a></li>
-        
-            <li><a href="#frontends">Frontends</a></li>
-        
-            <li><a href="#http-backends">HTTP Backends</a></li>
-        
-    
-    </ul>
-</div></div>
-                <div class="col-md-9" role="main">
 
-<p align="center">
-<img src="http://traefik.github.io/traefik.logo.svg" alt="Træfɪk" title="Træfɪk" />
-</p>
+    <div class="row-fluid">
+      <div id="main-content" class="span12">
+        <h1 id="404-page-not-found" style="text-align: center">404</h1>
+        <p style="text-align: center"><strong>Page not found</strong></p>
+      </div>
+    </div>
 
-<h1 id="getting-started">Getting started<a class="headerlink" href="#getting-started" title="Permanent link">##</a></h1>
-<p>Træfɪk is a modern HTTP reverse proxy and load balancer made to deploy microservices with ease.
-It supports several backends (<a href="https://www.docker.com/">Docker :whale:</a>, <a href="https://mesosphere.github.io/marathon/">Mesos/Marathon</a>, <a href="https://consul.io/">Consul</a>, <a href="https://coreos.com/etcd/">Etcd</a>, Rest API, file...) to manage its configuration automatically and dynamically.</p>
-<p>Basically, Træfɪk is a http router, which sends traffic from frontends to http backends, following rules you have configured.</p>
-<h2 id="frontends">Frontends<a class="headerlink" href="#frontends" title="Permanent link">##</a></h2>
-<p>Frontends can be defined using the following rules:</p>
-<ul>
-<li><code>Headers</code>: Headers adds a matcher for request header values. It accepts a sequence of key/value pairs to be matched. For example: <code>Content-Type, application/json</code></li>
-<li><code>HeadersRegexp</code>: Regular expressions can be used with headers as well. It accepts a sequence of key/value pairs, where the value has regex support. For example: <code>Content-Type, application/(text|json)</code></li>
-<li><code>Host</code>: Host adds a matcher for the URL host. It accepts a template with zero or more URL variables enclosed by <code>{}</code>. Variables can define an optional regexp pattern to be matched: <code>www.traefik.io</code>, <code>{subdomain:[a-z]+}.traefik.io</code></li>
-<li><code>Methods</code>: Methods adds a matcher for HTTP methods. It accepts a sequence of one or more methods to be matched, e.g.: <code>GET</code>, <code>POST</code>, <code>PUT</code></li>
-<li><code>Path</code>: Path adds a matcher for the URL path. It accepts a template with zero or more URL variables enclosed by <code>{}</code>. The template must start with a <code>/</code>. For exemple <code>/products/</code> <code>/articles/{category}/{id:[0-9]+}</code></li>
-<li><code>PathStrip</code>: Same as <code>Path</code> but strip the given prefix from the request URL's Path.</li>
-<li><code>PathPrefix</code>: PathPrefix adds a matcher for the URL path prefix. This matches if the given template is a prefix of the full URL path.</li>
-<li><code>PathPrefixStrip</code>: Same as <code>PathPrefix</code> but strip the given prefix from the request URL's Path.</li>
-</ul>
-<p>A frontend is a set of rules that forwards the incoming http traffic to a backend.
- You can optionally enable <code>passHostHeader</code> to forward client <code>Host</code> header to the backend.</p>
-<h2 id="http-backends">HTTP Backends<a class="headerlink" href="#http-backends" title="Permanent link">##</a></h2>
-<p>A backend is responsible to load-balance the traffic coming from one or more frontends to a set of http servers.
-Various methods of load-balancing is supported:</p>
-<ul>
-<li><code>wrr</code>: Weighted Round Robin</li>
-<li><code>drr</code>: Dynamic Round Robin: increases weights on servers that perform better than others. It also rolls back to original weights if the servers have changed.</li>
-</ul>
-<p>A circuit breaker can also be applied to a backend, preventing high loads on failing servers.
-Initial state is Standby. CB observes the statistics and does not modify the request.
-In case if condition matches, CB enters Tripped state, where it responds with predefines code or redirects to another frontend.
-Once Tripped timer expires, CB enters Recovering state and resets all stats.
-In case if the condition does not match and recovery timer expries, CB enters Standby state.</p>
-<p>It can be configured using:</p>
-<ul>
-<li>Methods: <code>LatencyAtQuantileMS</code>, <code>NetworkErrorRatio</code>, <code>ResponseCodeRatio</code></li>
-<li>Operators:  <code>AND</code>, <code>OR</code>, <code>EQ</code>, <code>NEQ</code>, <code>LT</code>, <code>LE</code>, <code>GT</code>, <code>GE</code></li>
-</ul>
-<p>For example:
-- <code>NetworkErrorRatio() &gt; 0.5</code>: watch error ratio over 10 second sliding window for a frontend
-- <code>LatencyAtQuantileMS(50.0) &gt; 50</code>:  watch latency at quantile in milliseconds.
-- <code>ResponseCodeRatio(500, 600, 0, 600) &gt; 0.5</code>: ratio of response codes in range [500-600) to  [0-600)</p></div>
-            
+
         </div>
 
         <footer class="col-md-12">
@@ -216,8 +167,3 @@ In case if the condition does not match and recovery timer expries, CB enters St
 
     </body>
 </html>
-
-<!--
-MkDocs version : 0.15.3
-Build Date UTC : 2016-04-01 14:59:50.990233
--->
