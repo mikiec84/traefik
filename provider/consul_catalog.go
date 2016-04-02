@@ -16,6 +16,8 @@ import (
 const (
 	// DefaultWatchWaitTime is the duration to wait when polling consul
 	DefaultWatchWaitTime = 15 * time.Second
+	// Prefix for additional service/node configurations
+	ConsulCatalogTagPrefix = "traefik."
 )
 
 // ConsulCatalog holds configurations of the Consul catalog provider.
@@ -85,6 +87,19 @@ func (provider *ConsulCatalog) healthyNodes(service string) (catalogUpdate, erro
 	}, nil
 }
 
+func (provider *ConsulCatalog) getAttribute(node *api.ServiceEntry, name string) string {
+	for _, tag := range node.Service.Tags {
+		if strings.Index(tag, ConsulCatalogTagPrefix) == 0 {
+			kv := strings.SplitN(tag[len(ConsulCatalogTagPrefix):], "=", 2)
+			if len(kv) == 2 && kv[0] == name {
+				return kv[1]
+			}
+		}
+	}
+
+	return ""
+}
+
 func (provider *ConsulCatalog) getBackend(node *api.ServiceEntry) string {
 	return strings.ToLower(node.Service.Service)
 }
@@ -95,6 +110,7 @@ func (provider *ConsulCatalog) getFrontendValue(service string) string {
 
 func (provider *ConsulCatalog) buildConfig(catalog []catalogUpdate) *types.Configuration {
 	var FuncMap = template.FuncMap{
+		"getAttribute":     provider.getAttribute,
 		"getBackend":       provider.getBackend,
 		"getFrontendValue": provider.getFrontendValue,
 		"replace":          replace,

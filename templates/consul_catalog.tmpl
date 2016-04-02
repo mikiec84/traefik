@@ -1,6 +1,15 @@
 [backends]{{range .Nodes}}
+    {{if ne (getAttribute . "enable") "false"}}
     [backends.backend-{{getBackend .}}.servers.server-{{.Node.Node | replace "." "-"}}-{{.Service.Port}}]
+    {{if $scheme := getAttribute . "protocol"}}
+    url = "{{$scheme}}://{{.Node.Address}}:{{.Service.Port}}"
+    {{else}}
     url = "http://{{.Node.Address}}:{{.Service.Port}}"
+    {{end}}
+    {{with $weight := getAttribute . "weight"}}
+    weight = {{$weight}}
+    {{end}}
+    {{end}}
 {{end}}
 
 [frontends]{{range .Services}}
